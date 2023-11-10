@@ -168,7 +168,7 @@ mixin _$UserState {
   String get errorMsg => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
-  List<dynamic> get resultList => throw _privateConstructorUsedError;
+  Modelclass? get resultList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $UserStateCopyWith<UserState> get copyWith =>
@@ -181,10 +181,9 @@ abstract class $UserStateCopyWith<$Res> {
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
   $Res call(
-      {String errorMsg,
-      bool isError,
-      bool isLoading,
-      List<dynamic> resultList});
+      {String errorMsg, bool isError, bool isLoading, Modelclass? resultList});
+
+  $ModelclassCopyWith<$Res>? get resultList;
 }
 
 /// @nodoc
@@ -203,7 +202,7 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
     Object? errorMsg = null,
     Object? isError = null,
     Object? isLoading = null,
-    Object? resultList = null,
+    Object? resultList = freezed,
   }) {
     return _then(_value.copyWith(
       errorMsg: null == errorMsg
@@ -218,11 +217,23 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      resultList: null == resultList
+      resultList: freezed == resultList
           ? _value.resultList
           : resultList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as Modelclass?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ModelclassCopyWith<$Res>? get resultList {
+    if (_value.resultList == null) {
+      return null;
+    }
+
+    return $ModelclassCopyWith<$Res>(_value.resultList!, (value) {
+      return _then(_value.copyWith(resultList: value) as $Val);
+    });
   }
 }
 
@@ -235,10 +246,10 @@ abstract class _$$InitialImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String errorMsg,
-      bool isError,
-      bool isLoading,
-      List<dynamic> resultList});
+      {String errorMsg, bool isError, bool isLoading, Modelclass? resultList});
+
+  @override
+  $ModelclassCopyWith<$Res>? get resultList;
 }
 
 /// @nodoc
@@ -255,7 +266,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? errorMsg = null,
     Object? isError = null,
     Object? isLoading = null,
-    Object? resultList = null,
+    Object? resultList = freezed,
   }) {
     return _then(_$InitialImpl(
       errorMsg: null == errorMsg
@@ -270,10 +281,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      resultList: null == resultList
-          ? _value._resultList
+      resultList: freezed == resultList
+          ? _value.resultList
           : resultList // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as Modelclass?,
     ));
   }
 }
@@ -285,8 +296,7 @@ class _$InitialImpl implements _Initial {
       {required this.errorMsg,
       required this.isError,
       required this.isLoading,
-      required final List<dynamic> resultList})
-      : _resultList = resultList;
+      required this.resultList});
 
   @override
   final String errorMsg;
@@ -294,13 +304,8 @@ class _$InitialImpl implements _Initial {
   final bool isError;
   @override
   final bool isLoading;
-  final List<dynamic> _resultList;
   @override
-  List<dynamic> get resultList {
-    if (_resultList is EqualUnmodifiableListView) return _resultList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_resultList);
-  }
+  final Modelclass? resultList;
 
   @override
   String toString() {
@@ -317,13 +322,13 @@ class _$InitialImpl implements _Initial {
             (identical(other.isError, isError) || other.isError == isError) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality()
-                .equals(other._resultList, _resultList));
+            (identical(other.resultList, resultList) ||
+                other.resultList == resultList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMsg, isError, isLoading,
-      const DeepCollectionEquality().hash(_resultList));
+  int get hashCode =>
+      Object.hash(runtimeType, errorMsg, isError, isLoading, resultList);
 
   @JsonKey(ignore: true)
   @override
@@ -337,7 +342,7 @@ abstract class _Initial implements UserState {
       {required final String errorMsg,
       required final bool isError,
       required final bool isLoading,
-      required final List<dynamic> resultList}) = _$InitialImpl;
+      required final Modelclass? resultList}) = _$InitialImpl;
 
   @override
   String get errorMsg;
@@ -346,7 +351,7 @@ abstract class _Initial implements UserState {
   @override
   bool get isLoading;
   @override
-  List<dynamic> get resultList;
+  Modelclass? get resultList;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

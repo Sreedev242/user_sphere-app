@@ -6,7 +6,7 @@ class UserState with _$UserState {
     required String errorMsg,
     required bool isError,
     required bool isLoading,
-    required List resultList
+    required Modelclass? resultList
   }) = _Initial;
   
   factory UserState.initial() {
@@ -14,7 +14,7 @@ class UserState with _$UserState {
       errorMsg: '',
       isError: false,
         isLoading: false,
-      resultList: [],
+      resultList:Modelclass(result: []),
         );
   }
 }

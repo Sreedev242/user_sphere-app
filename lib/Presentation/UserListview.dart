@@ -45,7 +45,9 @@ class UserListviewScreen extends StatelessWidget {
                       child: ListTile(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(builder:(context) {
-                            return UserDetailsScreen(userdata: state.resultList[index]);
+                            return UserDetailsScreen(
+                              
+                              userdata: state.resultList!.result[index]);
                           },));
                         },
                         leading: CircleAvatar(
@@ -53,13 +55,14 @@ class UserListviewScreen extends StatelessWidget {
                           child: Center(
                             child: Text(
                               textAlign: TextAlign.center,
-                              state.resultList[index]['id'].toString(),
+                              '${state.resultList!.result[index].Id}',
+                              // state.resultList[index]['id'].toString(),
                               style: TextStyle(color: Colors.white),
                             ),
                           ),
                         ),
                         title: Text(
-                          'User ${state.resultList[index]['id']}',
+                          'User ${state.resultList?.result[index].Id}',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
@@ -70,7 +73,7 @@ class UserListviewScreen extends StatelessWidget {
                       height: 3,
                     );
                   },
-                  itemCount:state.resultList.length);
+                  itemCount:state.resultList!.result.length);
             },
           )),
     );

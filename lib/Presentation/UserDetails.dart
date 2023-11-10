@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:user_sphere/Core/constatnts.dart';
+import 'package:user_sphere/Domain/model.dart';
 
 class UserDetailsScreen extends StatelessWidget {  
-  final Map<String, dynamic> userdata;
+  final Result userdata;
   const UserDetailsScreen({super.key, required this.userdata});
 
   @override
@@ -14,7 +15,7 @@ class UserDetailsScreen extends StatelessWidget {
         actionsIconTheme:IconThemeData(color: Colors.white),
         backgroundColor: Constants.kAppColor,
         centerTitle: true,
-      title: Text('User ${userdata['id']}',style: TextStyle(
+      title: Text('User ${userdata.Id}',style: TextStyle(
         color: Colors.white,
         fontSize: 25,fontWeight: FontWeight.bold),),
       ),
@@ -26,17 +27,17 @@ class UserDetailsScreen extends StatelessWidget {
             children: [
               Center(child: Text(
                 textAlign:TextAlign.center,
-                'UserID  : ${userdata['userId']}',style: TextStyle(fontSize: 22),)),
+                'UserID  : ${userdata.UserId}',style: TextStyle(fontSize: 22),)),
               SizedBox(height: 4,),
               Text(
                 textAlign:TextAlign.center,
                 
-                '${userdata['title']}',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+                '${userdata.title}',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
               SizedBox(height: 4,),
               Text(
                 textAlign:TextAlign.center,
                 
-                '${userdata['body']}',style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),)
+                '${userdata.body}',style: TextStyle(fontSize: 15,fontWeight: FontWeight.normal),)
             ],
           ),
         ),
